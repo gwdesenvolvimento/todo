@@ -1,0 +1,11 @@
+.wrapper {
+    max-width: 46rem;
+    margin: 4rem auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    justify-content: center;
+    
+}
+
+

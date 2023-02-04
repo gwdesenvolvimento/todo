@@ -1,0 +1,113 @@
+.task {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 0.75rem;
+    height: 4.5rem;
+    background: var(--gray-500);
+    border: 1px solid var(--gray-400);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.task + .task{
+    margin-top: 0.75rem;   
+}
+
+.taskContent {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--gray-100);
+    width: 90%;
+    display: flex;
+    align-items: center;
+
+}
+
+.taskDone {
+    text-decoration-line: line-through;
+    color: var(--gray-300);
+    font-size: 0.875rem;
+    font-weight: 400
+}
+
+.buttonMarkTaskDone {
+    background: var(--blue-200);
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 40%;
+}
+
+.boxTaskContent {
+    padding: 0.75rem 0.75rem;
+}
+
+input[type='checkbox'] {
+    display: none;
+}
+ 
+.radioContainer {
+    display: flex;
+    align-items: center;    
+}
+
+
+.customRadio {
+    border: 2px solid var(--blue-200);
+    background-color: transparent;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.customRadio, span {
+  transition: 0.5s ease;
+}
+
+.customRadio span {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    border-radius: 50%;
+}
+
+/*.checkbox input[type="checkbox"]:checked + label::before {
+    content: "\f3fd";
+    background-color: #2ecc71;
+  }*/
+
+input[type='checkbox']:checked + .customRadio {
+    background: #ac70f9;
+    border: none;
+    color:var(--white);
+    content: "\f3fd";
+    
+}
+
+.btnDeleteTask {
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    height: 30px;
+}
+
+.btnDeleteTask svg{
+    color: var(--gray-300);
+}
+
+.btnDeleteTask svg:hover{
+    color: var(--danger);
+    background-color: var(--gray-400);
+    border-radius: 5px
+}
