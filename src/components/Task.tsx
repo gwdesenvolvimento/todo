@@ -6,10 +6,11 @@ interface TaskProps {
     content: string,
     done: boolean,
     onMarkDone: (id : number) => void,
-    onDeleteTask: (id : number) => void
+    onDeleteTask: (id : number) => void,
+    onMarkUndone: (id : number) => void
 }
 
-export function Task({id, content, done, onMarkDone, onDeleteTask} : TaskProps) {
+export function Task({id, content, done, onMarkDone, onDeleteTask, onMarkUndone} : TaskProps) {
     function handleDoneTask(){
         onMarkDone(id)
     }

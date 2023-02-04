@@ -9,15 +9,20 @@ export function TaskList () {
     const [task, setTask] = useState('')
     const [tasksDone, setTasksDone] = useState(0)
     useEffect(() => {
-        console.log(tasks)
     },[tasks])
 
     function handleDoneClick (id) {
-        
-        let newListTask = tasks.map(task =>
-            task.id === id ? { ...task, done: !task.done } : task
-        )
-        setTasks(newListTask)
+        const updatedTodos = tasks.map(todo => 
+            todo.id === id ? {...todo, done: true} : todo
+        );
+        setTasks(updatedTodos);
+    }
+
+    function handleDoneClickFalse (id) {
+        const updatedTodos = tasks.map(todo => 
+            todo.id === id ? {...todo, done: false} : todo
+        );
+        setTasks(updatedTodos);
     }
 
     function handleCreateNewTask(event : FormEvent) {
@@ -88,6 +93,7 @@ export function TaskList () {
                             content={task.content} 
                             done={task.done}
                             onMarkDone={handleDoneClick}
+                            onMarkUndone={handleDoneClickFalse}
                             onDeleteTask={deleteTask}
                         />        
                     )
