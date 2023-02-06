@@ -15,7 +15,6 @@
     line-height: 1.06rem;
     display: flex;
 }
-
 .counter {
     margin-left: 8px;
     background-color: var(--gray-400);

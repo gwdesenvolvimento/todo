@@ -33,9 +33,13 @@
 
 .taskDone {
     text-decoration-line: line-through;
-    color: var(--gray-300);
+    font-weight: 400;
     font-size: 0.875rem;
-    font-weight: 400
+    line-height: 1.25rem;
+    color: var(--gray-300);
+    width: 90%;
+    display: flex;
+    align-items: center;
 }
 
 .buttonMarkTaskDone {
@@ -111,3 +115,4 @@ input[type='checkbox']:checked + .customRadio {
     background-color: var(--gray-400);
     border-radius: 5px
 }
+

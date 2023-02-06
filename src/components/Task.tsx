@@ -7,10 +7,9 @@ interface TaskProps {
     done: boolean,
     onMarkDone: (id : number) => void,
     onDeleteTask: (id : number) => void,
-    onMarkUndone: (id : number) => void
 }
 
-export function Task({id, content, done, onMarkDone, onDeleteTask, onMarkUndone} : TaskProps) {
+export function Task({id, content, done, onMarkDone, onDeleteTask} : TaskProps) {
     function handleDoneTask(){
         onMarkDone(id)
     }
@@ -20,14 +19,14 @@ export function Task({id, content, done, onMarkDone, onDeleteTask, onMarkUndone}
     return (    
         <div className={style.task}>
             <div className={style.radioContainer}>
-                <label onClick={handleDoneTask}>
-                    <input type="checkbox" id="radio1" />
+                <label>
+                    <input type="checkbox" id="radio1" onClick={() => handleDoneTask()}/>
                     <div className={style.customRadio}>
                         <span></span>
                     </div>
                 </label>
             </div>
-            <div className={style.taskContent}>
+            <div className={done ? style.taskDone : style.taskContent}>
                 {content}
             </div>
             

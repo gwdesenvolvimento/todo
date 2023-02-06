@@ -4,25 +4,27 @@ import { Task } from './Task'
 import style from './TaskList.module.css'
 import { TaskListEmpty } from './TaskListEmpty'
 
+interface TaskItem {
+    id: number,
+    content: string,
+    done: boolean,
+}
 export function TaskList () {
     const [tasks, setTasks] = useState([]);
     const [task, setTask] = useState('')
-    const [tasksDone, setTasksDone] = useState(0)
-    useEffect(() => {
-    },[tasks])
+    const [tasksDone, setTasksDone] = useState(0)  
 
-    function handleDoneClick (id) {
-        const updatedTodos = tasks.map(todo => 
-            todo.id === id ? {...todo, done: true} : todo
-        );
-        setTasks(updatedTodos);
-    }
-
-    function handleDoneClickFalse (id) {
-        const updatedTodos = tasks.map(todo => 
-            todo.id === id ? {...todo, done: false} : todo
-        );
-        setTasks(updatedTodos);
+    function handleDoneClick (id : number) {
+        const newList = tasks.map((item : TaskItem) => {
+            if ( item.id === id) {
+                return {
+                    ...item,
+                    done : !item?.done
+                }
+            }
+            return item
+        });
+        setTasks(newList)
     }
 
     function handleCreateNewTask(event : FormEvent) {
@@ -79,13 +81,13 @@ export function TaskList () {
                 <div className={style.counterSpaces}>
                     <span className={style.doneTasksText}>Concluídas</span>
                     <div className={style.counter}>
-                        {tasksDone}
+                        {tasks.filter(item => item.done).length}
                     </div>
                 </div>
             </header>
 
             {tasks.length > 0 ? 
-                tasks.map(task => {
+                tasks.map((task : TaskItem) => {
                     return (
                         <Task 
                             key={task.id} 
@@ -93,7 +95,6 @@ export function TaskList () {
                             content={task.content} 
                             done={task.done}
                             onMarkDone={handleDoneClick}
-                            onMarkUndone={handleDoneClickFalse}
                             onDeleteTask={deleteTask}
                         />        
                     )
